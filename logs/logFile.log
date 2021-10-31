@@ -1,0 +1,2 @@
+[ERROR] 2021-10-30 20:55:26.416 [main]   TextReaderImpl - Error of reading file "data/text.txt"java.nio.file.NoSuchFileException: data\text.txt
+[ERROR] 2021-10-30 21:07:34.638 [main]   TextReaderImpl - File data/tdext.txt doesn't exist in specified directory.
