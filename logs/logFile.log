@@ -1,2 +1,2 @@
-[ERROR] 2021-10-30 20:55:26.416 [main]   TextReaderImpl - Error of reading file "data/text.txt"java.nio.file.NoSuchFileException: data\text.txt
-[ERROR] 2021-10-30 21:07:34.638 [main]   TextReaderImpl - File data/tdext.txt doesn't exist in specified directory.
+[ERROR] 2021-10-31 20:21:42.169 [main]   SymbolLeaf - Unsupported operation of getting children on symbol
+[ERROR] 2021-10-31 20:23:17.434 [main]   SymbolLeaf - Unsupported operation of getting children on symbol

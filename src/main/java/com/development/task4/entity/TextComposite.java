@@ -1,6 +1,7 @@
 package com.development.task4.entity;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class TextComposite implements TextComponent {
@@ -60,5 +61,13 @@ public class TextComposite implements TextComponent {
             sb.append(textComponent.toString()).append(delimiter);
         }
         return sb.toString();
+    }
+
+    public static class SentenceAmountComparator implements Comparator<TextComponent> {
+
+        @Override
+        public int compare(TextComponent textComponent1, TextComponent textComponent2) {
+            return Integer.compare(textComponent1.getChildren().size(), textComponent2.getChildren().size());
+        }
     }
 }

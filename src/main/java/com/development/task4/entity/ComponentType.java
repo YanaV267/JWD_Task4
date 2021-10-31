@@ -6,8 +6,8 @@ public enum ComponentType {
     LEXEME(" "),
     WORD(""),
     EXPRESSION(""),
-    SYMBOL(""),
-    LETTER("");
+    LETTER(""),
+    SYMBOL("");
 
     private final String delimiter;
 
