@@ -11,6 +11,7 @@ import com.development.task4.service.TextOperation;
 import com.development.task4.service.impl.TextOperationImpl;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -56,23 +57,39 @@ public class TextOperationTest {
 
     @Test
     public void countSimilarWords() {
-        int expected = 24;
-        Map<String, Integer> similarWords = textOperation.countSimilarWords(textComposite);
+        int expected = 25;
+        Map<String, Long> similarWords = textOperation.countSimilarWords(textComposite);
         int actual = similarWords.size();
         Assert.assertEquals(actual, expected, "amount of repeating words is invalid");
     }
 
-    @Test
-    public void countConsonants() {
-        long expected = 176;
-        long actual = textOperation.countConsonants(textComposite.getChildren().get(0));
+    @Test(dataProvider = "sentences")
+    public void countConsonants(TextComponent sentenceComponent) {
+        long expected = 60;
+        long actual = textOperation.countConsonants(sentenceComponent);
         Assert.assertEquals(actual, expected, "amount of consonants is invalid");
     }
 
-    @Test
-    public void countVowels() {
-        long expected = 117;
-        long actual = textOperation.countVowels(textComposite.getChildren().get(0));
+    @Test(dataProvider = "getSentences")
+    public void countVowels(TextComponent sentenceComponent) {
+        long expected = 42;
+        long actual = textOperation.countVowels(sentenceComponent);
         Assert.assertEquals(actual, expected, "amount of vowels is invalid");
+    }
+
+    @DataProvider(name = "sentences")
+    public Object[][] getSentences() {
+        List<TextComponent> sentences = textComposite.getChildren().stream()
+                .flatMap(p -> p.getChildren().stream())
+                .toList();
+        int flag = 0;
+        return new Object[][]{
+                {sentences.get(flag++)},
+                {sentences.get(flag++)},
+                {sentences.get(flag++)},
+                {sentences.get(flag++)},
+                {sentences.get(flag++)},
+                {sentences.get(flag)},
+        };
     }
 }

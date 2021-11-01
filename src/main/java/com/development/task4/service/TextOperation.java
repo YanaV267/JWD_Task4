@@ -10,7 +10,7 @@ public interface TextOperation {
     List<TextComponent> sortParagraphsBySentenceAmount(TextComposite textComposite);
     List<TextComponent> findLongestWordSentences(TextComposite textComposite);
     List<TextComponent> deleteSentences(TextComposite textComposite, int minWordAmount);
-    Map<String, Integer> countSimilarWords(TextComposite textComposite);
+    Map<String, Long> countSimilarWords(TextComposite textComposite);
     long countConsonants(TextComponent sentenceComponent);
     long countVowels(TextComponent sentenceComponent);
 }
