@@ -14,13 +14,13 @@ public class SentenceParser implements TextParser {
 
     @Override
     public TextComposite parse(String paragraphValue) {
-        TextComposite sentenceComposite = new TextComposite(ComponentType.SENTENCE);
+        TextComposite paragraphComposite = new TextComposite(ComponentType.PARAGRAPH);
         Pattern sentencePattern = Pattern.compile(SENTENCE_DELIMITER_REGEX);
         Matcher sentences = sentencePattern.matcher(paragraphValue);
-        while(sentences.find()){
+        while (sentences.find()) {
             TextComponent sentenceComponent = lexemeParser.parse(sentences.group());
-            sentenceComposite.add(sentenceComponent);
+            paragraphComposite.add(sentenceComponent);
         }
-        return sentenceComposite;
+        return paragraphComposite;
     }
 }

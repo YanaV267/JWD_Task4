@@ -11,12 +11,12 @@ public class ParagraphParser implements TextParser {
 
     @Override
     public TextComposite parse(String textValue) {
+        TextComposite textComposite = new TextComposite(ComponentType.TEXT);
         String[] paragraphs = textValue.split(PARAGRAPH_DELIMITER_REGEX);
-        TextComposite paragraphComposite = new TextComposite(ComponentType.PARAGRAPH);
         for (String paragraph : paragraphs) {
             TextComponent paragraphComponent = sentenceParser.parse(paragraph);
-            paragraphComposite.add(paragraphComponent);
+            textComposite.add(paragraphComponent);
         }
-        return paragraphComposite;
+        return textComposite;
     }
 }

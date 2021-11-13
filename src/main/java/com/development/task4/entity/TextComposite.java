@@ -57,8 +57,14 @@ public class TextComposite implements TextComponent {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         String delimiter = componentType.getDelimiter();
+        if (componentType.equals(ComponentType.PARAGRAPH)) {
+            sb.append(delimiter);
+        }
         for (TextComponent textComponent : textComponents) {
-            sb.append(textComponent.toString()).append(delimiter);
+            sb.append(textComponent.toString());
+        }
+        if (!componentType.equals(ComponentType.PARAGRAPH)) {
+            sb.append(delimiter);
         }
         return sb.toString();
     }

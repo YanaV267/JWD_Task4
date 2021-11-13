@@ -7,4 +7,5 @@ public interface TextComponent {
     void remove(TextComponent textComponent);
     ComponentType getType();
     List<TextComponent> getChildren();
+    String toString();
 }

@@ -11,8 +11,8 @@ public class WordParser implements TextParser {
     @Override
     public TextComposite parse(String lexemeValue) {
         TextComposite wordComposite = new TextComposite(ComponentType.WORD);
-        TextComponent wordComponent = letterParser.parse(lexemeValue);
-        wordComposite.add(wordComponent);
+        TextComponent lexemeComponent = letterParser.parse(lexemeValue);
+        wordComposite.add(lexemeComponent);
         return wordComposite;
     }
 }

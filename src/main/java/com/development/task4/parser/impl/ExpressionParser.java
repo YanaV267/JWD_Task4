@@ -11,8 +11,8 @@ public class ExpressionParser implements TextParser {
     @Override
     public TextComposite parse(String expressionValue) {
         TextComposite expressionComposite = new TextComposite(ComponentType.EXPRESSION);
-        TextComponent expressionComponent = letterParser.parse(expressionValue);
-        expressionComposite.add(expressionComponent);
+        TextComponent letterComponent = letterParser.parse(expressionValue);
+        expressionComposite.add(letterComponent);
         return expressionComposite;
     }
 }

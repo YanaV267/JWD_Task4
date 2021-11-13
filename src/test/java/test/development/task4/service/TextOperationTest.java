@@ -49,8 +49,8 @@ public class TextOperationTest {
 
     @Test
     public void deleteSentences() {
-        int expected = 3;
-        List<TextComponent> sentences = textOperation.deleteSentences(textComposite, 20);
+        int expected = 2;
+        List<TextComponent> sentences = textOperation.deleteSentences(textComposite, 24);
         int actual = sentences.size();
         Assert.assertEquals(actual, expected, "remaining amount of sentences is invalid");
     }
@@ -65,12 +65,12 @@ public class TextOperationTest {
 
     @Test(dataProvider = "sentences")
     public void countConsonants(TextComponent sentenceComponent) {
-        long expected = 60;
+        long expected = 57;
         long actual = textOperation.countConsonants(sentenceComponent);
         Assert.assertEquals(actual, expected, "amount of consonants is invalid");
     }
 
-    @Test(dataProvider = "getSentences")
+    @Test(dataProvider = "sentences")
     public void countVowels(TextComponent sentenceComponent) {
         long expected = 42;
         long actual = textOperation.countVowels(sentenceComponent);

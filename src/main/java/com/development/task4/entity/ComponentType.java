@@ -1,6 +1,7 @@
 package com.development.task4.entity;
 
 public enum ComponentType {
+    TEXT("\n"),
     PARAGRAPH("\n\t"),
     SENTENCE(""),
     LEXEME(" "),

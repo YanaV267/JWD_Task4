@@ -17,26 +17,28 @@ public class LexemeParser implements TextParser {
 
     @Override
     public TextComposite parse(String sentenceValue) {
-        TextComposite lexemeComposite = new TextComposite(ComponentType.LEXEME);
+        TextComposite sentenceComposite = new TextComposite(ComponentType.SENTENCE);
         Pattern lexemePattern = Pattern.compile(LEXEME_DELIMITER_REGEX);
         Matcher lexemes = lexemePattern.matcher(sentenceValue);
         while (lexemes.find()) {
+            TextComposite lexemeComponent = new TextComposite(ComponentType.LEXEME);
             String lexeme = lexemes.group();
             if (lexeme.matches(WORD_DELIMITER_REGEX)) {
                 TextComponent wordComponent = wordParser.parse(lexeme);
-                lexemeComposite.add(wordComponent);
+                lexemeComponent.add(wordComponent);
             } else {
                 String possibleWord = lexeme.substring(0, lexeme.length() - 1);
                 if (possibleWord.matches(WORD_DELIMITER_REGEX)) {
                     TextComponent wordComponent = wordParser.parse(possibleWord);
-                    lexemeComposite.add(wordComponent);
-                    lexemeComposite.add(new SymbolLeaf(ComponentType.SYMBOL, lexeme.charAt(possibleWord.length())));
+                    lexemeComponent.add(wordComponent);
+                    lexemeComponent.add(new SymbolLeaf(ComponentType.SYMBOL, lexeme.charAt(possibleWord.length())));
                 } else {
                     TextComponent expressionComponent = expressionParser.parse(lexeme);
-                    lexemeComposite.add(expressionComponent);
+                    lexemeComponent.add(expressionComponent);
                 }
             }
+            sentenceComposite.add(lexemeComponent);
         }
-        return lexemeComposite;
+        return sentenceComposite;
     }
 }
