@@ -7,7 +7,6 @@ import com.development.task4.entity.TextComposite;
 import com.development.task4.parser.TextParser;
 
 public class LetterParser implements TextParser {
-    private static final String WORD_DELIMITER_REGEX = "[А-я\\w]+";
     private static final String LETTER_DELIMITER_REGEX = "";
 
     @Override

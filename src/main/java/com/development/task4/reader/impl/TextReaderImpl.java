@@ -17,15 +17,17 @@ public class TextReaderImpl implements TextReader {
     @Override
     public String readText(String filename) throws TextException {
         if (getClass().getClassLoader().getResource(filename) == null) {
-            LOGGER.error("File " + filename + " doesn't exist in specified directory.");
+            LOGGER.error("File {} doesn't exist in specified directory.", filename);
             throw new TextException("File " + filename + " doesn't exist in specified directory.");
         }
+        String fileText;
         try {
             Path pathToFile = Paths.get(getClass().getClassLoader().getResource(filename).toURI());
-            return Files.readString(pathToFile);
+            fileText = Files.readString(pathToFile);
         } catch (IOException | URISyntaxException exception) {
-            LOGGER.error("Error of reading file \"" + filename + "\": " + exception);
+            LOGGER.error("Error of reading file \"{}\": {}", filename, exception);
+            throw new TextException("Error of reading file \"" + filename + "\": ", exception);
         }
-        return null;
+        return fileText;
     }
 }
