@@ -14,7 +14,8 @@ public class LetterParser implements TextParser {
         TextComposite letterComposite = new TextComposite(ComponentType.LETTER);
         String[] symbols = textValue.split(LETTER_DELIMITER_REGEX);
         for (String symbol : symbols) {
-            TextComponent letterComponent = new SymbolLeaf(ComponentType.LETTER, symbol.charAt(0));
+            TextComponent letterComponent =
+                    new SymbolLeaf(Character.isLetter(symbol.charAt(0)) ? ComponentType.LETTER : ComponentType.SYMBOL, symbol.charAt(0));
             letterComposite.add(letterComponent);
         }
         return letterComposite;

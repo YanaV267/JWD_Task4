@@ -14,7 +14,9 @@ public class TextOperationImpl implements TextOperation {
 
     @Override
     public List<TextComponent> sortParagraphsBySentenceAmount(TextComposite textComposite) {
-        return textComposite.getChildren().stream().sorted(new TextComposite.SentenceAmountComparator()).toList();
+        return textComposite.getChildren().stream()
+                .sorted(new TextComposite.SentenceAmountComparator())
+                .toList();
     }
 
     @Override
